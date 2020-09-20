@@ -68,7 +68,7 @@ db.once("open", () => {
 // ????
 
 // API routes
-app.get("/", (req, res) => res.status(200).send("Hello Isyraf"));
+app.get("/", (req, res) => res.status(200).send("Hello Isyraf Zakil"));
 
 app.get("/messages/sync", (req, res) => {
   Messages.find((err, data) => {
@@ -86,7 +86,6 @@ app.post("/messages/new", (req, res) => {
   Messages.create(dbMessage, (err, data) => {
     if (err) {
       res.status(500).send(err);
-      console.log("error getting messages", err);
     } else {
       res.status(201).send(`New Message Created: \n  ${data}`);
     }
