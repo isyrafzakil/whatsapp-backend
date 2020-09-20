@@ -70,8 +70,8 @@ db.once("open", () => {
 // API routes
 app.get("/", (req, res) => res.status(200).send("Hello Isyraf Zakil"));
 
-app.get("/messages/sync", (req, res) => {
-  Messages.find((err, data) => {
+app.get("/messages/sync", async (req, res) => {
+  await Messages.find((err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -80,10 +80,10 @@ app.get("/messages/sync", (req, res) => {
   });
 });
 
-app.post("/messages/new", (req, res) => {
+app.post("/messages/new", async (req, res) => {
   const dbMessage = req.body;
 
-  Messages.create(dbMessage, (err, data) => {
+  await Messages.create(dbMessage, (err, data) => {
     if (err) {
       res.status(500).send(err);
     } else {
