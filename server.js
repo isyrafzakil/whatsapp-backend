@@ -86,6 +86,7 @@ app.post("/messages/new", (req, res) => {
   Messages.create(dbMessage, (err, data) => {
     if (err) {
       res.status(500).send(err);
+      console.log("error getting messages", err);
     } else {
       res.status(201).send(`New Message Created: \n  ${data}`);
     }
