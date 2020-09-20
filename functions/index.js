@@ -1,7 +1,23 @@
+const functions = require("firebase-functions");
+
+// // Create and Deploy Your First Cloud Functions
+// // https://firebase.google.com/docs/functions/write-firebase-functions
+//
+// exports.helloWorld = functions.https.onRequest((request, response) => {
+//   functions.logger.info("Hello logs!", {structuredData: true});
+//   response.send("Hello from Firebase!");
+// });
+
+// const express = require("express");
+// const mongoose = require("mongoose");
+// const Messages = require("../dbMessages.js");
+// const Pusher = require("pusher");
+// const cors = require("cors");
+
 // importing
 import express from "express";
 import mongoose from "mongoose";
-import Messages from "./dbMessages.js";
+import Messages from "../dbMessages.js";
 import Pusher from "pusher";
 import cors from "cors";
 
@@ -93,4 +109,6 @@ app.post("/messages/new", (req, res) => {
 });
 
 // listener
-app.listen(port, () => console.log(`Listening on localhost:${port}`));
+app.listen(port, () => console.log(`Listening on port:${port}`));
+
+exports.app = functions.https.onRequest(app);
